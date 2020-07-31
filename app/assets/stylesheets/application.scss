@@ -13,4 +13,40 @@
  *= require_tree .
  *= require_self
  */
- 
+
+.cu_nav {
+  background-color: #1b2a3d;
+  height: 100vh;
+}
+
+.nav-links {
+  font-size: 1rem;
+}
+
+.cu_pp {
+  width: 4rem;
+  height: 4em;
+  object-fit: cover;
+}
+
+.cu_nav_links {
+  div{
+    height: 60px;
+    &:hover{
+      background-color: #4fa0df;
+    }
+  }
+}
+
+.feeds {
+  width: 70%;
+}
+
+.right_bar {
+  width: 30%;
+}
+
+.main_p {
+  background-color: #f5f6f8;
+
+}

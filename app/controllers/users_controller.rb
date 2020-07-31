@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, except: %i[login new create]
+  # before_action :authenticate_user, except: %i[login new create destroy]
 
   def index
     @user = User.all

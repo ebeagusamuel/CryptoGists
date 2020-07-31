@@ -11,27 +11,77 @@
   </head>
 
   <body>
-    <nav class='navbar navbar-light bg-primary py-3 px-2 d-flex justify-content-between'>
-      <div></div>
-      <div class='pr-3'>
-        <% if current_user%>
-          <span class="nav-item pr-3"><%= link_to "#{current_user.username}", edit_user_path(current_user), class: "text-white text-decoration-none" %></span>
-          <span class="nav-item"><%= link_to "logout", user_path(current_user), method: :delete, class: "text-white text-decoration-none" %></span>
-        <%else%>
-          <span class="nav-item pr-3"><%= link_to "Login", login_path, class: "text-white text-decoration-none"%></span> 
-          <span class="nav-item"><%= link_to "Sign up", new_user_path, class: "text-white text-decoration-none"%></span>
-        <%end%>
+    <div class='row'>
+      <% x = 12%>
+      <% if current_user %>
+        <% x = 10 %>
+        <div class='cu_nav col-2 mr-0 pr-0'>
+          <div class='d-flex py-4 px-2 align-items-center border-bottom border-dark'>
+            <div>
+              <%= image_tag current_user.profile_image, class: 'cu_pp rounded'%>
+            </div>
+            <div class='text-white text-center ml-2'>Ebeagu Samuel</div>
+          </div>
+
+          <div class='row px-0 mx-0'>
+            <div class='col-6 text-center px-3 py-3 border border-left-0 border-top-0 border-dark'>
+              <span class='font-weight-bold text-white'>10</span>
+              <p class='text-secondary'>Following</p>
+            </div>
+            <div class='col-6 text-center px-3 py-3 border-bottom border-dark'>
+              <span class='font-weight-bold text-white'>10</span>
+              <p class='text-secondary'>Following</p>
+            </div>
+          </div>
+
+          <div class='cu_nav_links text-center'>
+            <div class='border-bottom border-dark pt-3'>
+              <%= link_to root_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
+                HOME
+              <% end %>
+            </div>
+            <div class='border-bottom border-dark pt-3'>
+              <%= link_to root_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
+                PROFILE
+              <% end %>
+            </div>
+            <div></div>
+          </div>
+        </div>
+      <% end %>
+
+      <div class="col-<%= x %> ml-0 pl-0">
+        <nav class='navbar navbar-light bg-primary py-3 px-2 d-flex justify-content-between'>
+          <div class='ml-2'>
+            <%= link_to root_path do %>
+              <%= image_tag 'logo.png', width: 50, height: 50 %>
+            <% end %>
+          </div>
+          <div class='pr-3'>
+            <% if current_user%>
+              <span class="nav-item pr-3"><%= link_to "#{current_user.username}", edit_user_path(current_user), class: "font-weight-bold text-white text-decoration-none nav-links" %></span>
+              <span class="nav-item"><%= link_to "Logout", user_path(current_user), method: :delete, class: "font-weight-bold text-white text-decoration-none nav-links" %></span>
+            <%else%>
+              <span class="nav-item pr-3"><%= link_to "Login", login_path, class: "font-weight-bold text-white text-decoration-none nav-links"%></span> 
+              <span class="nav-item"><%= link_to "Sign up", new_user_path, class: "font-weight-bold text-white text-decoration-none nav-links"%></span>
+            <%end%>
+          </div>
+        </nav>
+
+        <% if notice %>
+          <p class="alert alert-success text-center mb-0"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger text-center mb-0"><%= alert %></p>
+        <% end %>
+
+        <%= yield %>
       </div>
-    </nav>
 
-    <% if notice %>
-      <p class="alert alert-success text-center"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger text-center"><%= alert %></p>
-    <% end %>
+      
+    </div>
 
-    <%= yield %>
+  
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>

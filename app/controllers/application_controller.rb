@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-
   helper_method :current_user
 
   def current_user
@@ -14,7 +13,7 @@ class ApplicationController < ActionController::Base
     else
       session[:current_user_id] = @user.id
       flash.notice = 'Login successful'
-      redirect_to user_path(@user)
+      redirect_to root_path
     end
   end
 

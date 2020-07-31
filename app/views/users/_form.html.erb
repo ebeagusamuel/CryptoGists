@@ -1,0 +1,27 @@
+<%= form_for @user do |f| %>
+      
+  <div class="form-group">
+    <%= f.label :name %><br/>
+    <%= f.text_field :name, class: 'form-control', autofocus: true  %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :username %><br/>
+    <%= f.text_field :username, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :profile_image, 'Profile Photo' %><br/>
+    <%= f.file_field :profile_image, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cover_image, 'Cover Image' %><br/>
+    <%= f.file_field :cover_image, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit :User, value: "Submit", class: 'btn btn-primary'%>
+  </div>
+
+<% end %>

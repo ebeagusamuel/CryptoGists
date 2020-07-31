@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/login', to: 'users#login', as: 'login'
   post '/confirm_login', to: 'application#confirm_login'
 
+  root to: 'users#index'
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

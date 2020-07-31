@@ -11,7 +11,25 @@
   </head>
 
   <body>
-    <%= notice %>
+    <nav class='navbar navbar-light bg-primary py-3 px-2 d-flex justify-content-between'>
+      <div></div>
+      <div class='pr-3'>
+        <% if current_user%>
+          <span class="nav-item pr-3"><%= link_to "#{current_user.username}", edit_user_path(current_user), class: "text-white text-decoration-none" %></span>
+          <span class="nav-item"><%= link_to "logout", user_path(current_user), method: :delete, class: "text-white text-decoration-none" %></span>
+        <%else%>
+          <span class="nav-item pr-3"><%= link_to "Login", login_path, class: "text-white text-decoration-none"%></span> 
+          <span class="nav-item"><%= link_to "Sign up", new_user_path, class: "text-white text-decoration-none"%></span>
+        <%end%>
+      </div>
+    </nav>
+
+    <% if notice %>
+      <p class="alert alert-success text-center"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger text-center"><%= alert %></p>
+    <% end %>
 
     <%= yield %>
 

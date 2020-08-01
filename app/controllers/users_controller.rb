@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user, except: %i[login new create destroy]
+  before_action :authenticate_user, except: %i[login new create destroy]
 
-  def index
-    @user = User.all
+  def show
+    @user = User.find(params[:id])
+    @gists = @user.gists.order('created_at DESC')
   end
 
   def new

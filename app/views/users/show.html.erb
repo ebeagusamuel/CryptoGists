@@ -1,0 +1,16 @@
+<div class='d-flex main_p'>
+  <div class='feeds'>
+    <div>
+      <%= image_tag @user.profile_image, class: 'cover_img' %>
+    </div>
+
+    <div class='mt-4 mx-4 p-3 bg-white rounded'>
+      <h4 class='text-secondary font-weight-bold'>Gists by <%= @user.name %></h4><hr/>
+      <%= render 'gists/display-gists' %>
+    </div>
+  </div>
+
+  <div class='right_bar border-left border-gray'>
+    
+  </div>
+</div>

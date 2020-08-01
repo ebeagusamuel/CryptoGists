@@ -1,0 +1,17 @@
+<div class='px-4 py-3'>
+  <h4 class='font-weight-bold text-secondary'>Who to follow</h4><hr/>
+
+  <% @users.each do |user|%>
+    <div class='row px-2'>
+      <div class='col-4 pr-0'>
+        <%= link_to root_path do %>
+          <%= image_tag user.profile_image, class: 'pp rounded-circle' %>
+        <% end %>
+      </div>
+      <div class='col-8 pl-0'>
+        <%= link_to user.name, root_path, class: 'text-decoration-none ' %>
+        <%= link_to 'Unfollow', root_path, class: 'd-inline-block px-2 py-1 text-white bg-primary rounded text-decoration-none' %>
+      </div>
+    </div><hr/>
+  <% end %>
+</div>

@@ -5,4 +5,6 @@ class User < ApplicationRecord
   has_many :gists, dependent: :destroy
   has_one_attached :profile_image
   has_one_attached :cover_image
+
+  scope :exclude_current_user, ->(id) { where('id != ?', id) }
 end

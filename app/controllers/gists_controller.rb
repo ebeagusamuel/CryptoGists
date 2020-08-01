@@ -3,11 +3,12 @@ class GistsController < ApplicationController
 
   def index
     @gists = Gist.all.order('created_at DESC')
+    @users = User.exclude_current_user(current_user.id)
     @gist = Gist.new
   end
 
   def create
-    @gists = current_user.gists.build(gists_params)
+    @gist = current_user.gists.build(gist_params)
     if @gist.save
       redirect_to root_path, notice: 'Gist posted successfully'
     else

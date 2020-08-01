@@ -1,0 +1,34 @@
+<div class='my-3 p-3 bg-white rounded'>
+  <%= form_for @gist do |f|%>
+    <div class="form-group">
+      <%= f.label :body, 'Post a Gist', class: 'text-secondary font-weight-bold' %><br/>
+      <%= f.text_area :body, class: 'form-control', placeholder: 'Have a crypto gist?', autofocus: true  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit :Gist, value: "Post", class: 'btn btn-primary'%>
+    </div>
+  <% end %>
+</div>
+
+<div class='p-3 bg-white rounded'>
+  <h4 class='text-secondary font-weight-bold'>Recent Gists</h4><hr/>
+
+  <% @gists.each do |gist|%>
+    <div class='row'>
+      <div class='col-2 pr-0 text-center'>
+        <%= link_to root_path do %>
+          <%= image_tag gist.user.profile_image, class: 'pp rounded' %>
+        <% end %>
+      </div>
+      <div class='col-10 pl-0 '>
+        <div class='d-flex justify-content-between'>
+          <span class='text-secondary font-weight-bold'><%= link_to gist.user.name, root_path, class: 'text-decoration-none' %></span>
+          <span class='text-secondary font-weight-light'><%= gist.created_at.strftime("%Y/%m/%d %I:%M%P") %></span>
+        </div>
+        <p><%= gist.body %></p>
+      </div>
+    </div><hr>
+  <% end %>
+</div>
+

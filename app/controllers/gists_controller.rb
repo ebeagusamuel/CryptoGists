@@ -3,7 +3,7 @@ class GistsController < ApplicationController
 
   def index
     @gists = Gist.all.order('created_at DESC')
-    @users = User.exclude_current_user(current_user.id)
+    @users = User.who_to_follow(current_user)
     @gist = Gist.new
   end
 

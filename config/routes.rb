@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    post '/follow', to: 'users#follow', as: 'follow'
+    post '/unfollow', to: 'users#unfollow', as: 'unfollow'
+  end
   get '/login', to: 'users#login', as: 'login'
   post '/confirm_login', to: 'application#confirm_login'
+  post '/logout', to: 'users#logout', as: 'logout'
 
   resources :gists
 

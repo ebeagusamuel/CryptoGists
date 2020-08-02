@@ -41,7 +41,7 @@
               <% end %>
             </div>
             <div class='border-bottom border-dark pt-3'>
-              <%= link_to root_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
+              <%= link_to user_path(current_user), class: 'text-decoration-none font-weight-bold text-secondary' do %>
                 PROFILE
               <% end %>
             </div>
@@ -69,7 +69,7 @@
           <div class='pr-3'>
             <% if current_user%>
               <span class="nav-item pr-3"><%= link_to "#{current_user.username}", edit_user_path(current_user), class: "font-weight-bold text-white text-decoration-none nav-links" %></span>
-              <span class="nav-item"><%= link_to "Logout", user_path(current_user), method: :delete, class: "font-weight-bold text-white text-decoration-none nav-links" %></span>
+              <span class="nav-item"><%= link_to "Logout", logout_path, method: :post, class: "font-weight-bold text-white text-decoration-none nav-links" %></span>
             <%else%>
               <span class="nav-item pr-3"><%= link_to "Login", login_path, class: "font-weight-bold text-white text-decoration-none nav-links"%></span> 
               <span class="nav-item"><%= link_to "Sign up", new_user_path, class: "font-weight-bold text-white text-decoration-none nav-links"%></span>

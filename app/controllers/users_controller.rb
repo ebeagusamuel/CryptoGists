@@ -38,10 +38,26 @@ class UsersController < ApplicationController
 
   def login; end
 
-  def destroy
+  def logout
     @_current_user = session[:current_user_id] = nil
     redirect_to root_url
   end
+
+  # def follow
+  #   req = current_user.followings.build(follower_id: params[:id])
+
+  #   if req.save
+  #     flash.notice = "You have followed #{User.find(params[:id]).name}"
+  #     redirect_to root_path
+  #   else
+  #     flash.notice = 
+
+  # end
+
+  # def destroy
+  #   @_current_user = session[:current_user_id] = nil
+  #   redirect_to root_url
+  # end
 
   private
 

@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2020_08_01_221514) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "followings", "followers"
   add_foreign_key "followings", "users"
+  add_foreign_key "followings", "users", column: "follower_id"
   add_foreign_key "gists", "users"
 end

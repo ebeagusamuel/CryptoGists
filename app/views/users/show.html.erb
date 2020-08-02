@@ -14,7 +14,7 @@
     <div class='text-center mx-auto mt-4 pb-3 border-bottom border-gray'>
       <%= image_tag @user.profile_image, width: 100, height: 100, class: 'rounded-circle' %>
       <p class='text-dark font-weight-bold mb-1'><%= @user.name %></p>
-      <%= link_to 'Follow', root_path, class: 'btn btn-primary' %>
+      <%= display_link(@user) %>
     </div>
     
     <div class='d-flex'>
@@ -44,7 +44,7 @@
           </div>
           <div class='col-8 pl-0'>
             <%= link_to user.name, user_path(user), class: 'text-decoration-none ' %>
-            <%= link_to 'Unfollow', root_path, class: 'd-inline-block px-2 py-1 text-white bg-primary rounded text-decoration-none' %>
+            <%= display_link(user) %>
           </div>
         </div><hr/>
       <% end %>

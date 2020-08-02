@@ -10,7 +10,7 @@
       </div>
       <div class='col-8 pl-0'>
         <%= link_to user.name, user_path(user), class: 'text-decoration-none ' %>
-        <%= link_to 'Unfollow', root_path, class: 'd-inline-block px-2 py-1 text-white bg-primary rounded text-decoration-none' %>
+        <%= link_to 'follow', user_follow_path(user), method: :post, class: 'd-inline-block px-2 py-1 text-white bg-primary rounded text-decoration-none' %>
       </div>
     </div><hr/>
   <% end %>

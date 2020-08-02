@@ -44,16 +44,24 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
-  # def follow
-  #   req = current_user.followings.build(follower_id: params[:id])
+  def follow
+    req = current_user.followings.build(follower_id: params[:user_id])
 
-  #   if req.save
-  #     flash.notice = "You have followed #{User.find(params[:id]).name}"
-  #     redirect_to root_path
-  #   else
-  #     flash.notice = 
+    if req.save
+      flash.notice = "You have followed #{User.find(params[:user_id]).name}"
+      redirect_to root_path
+    else
+      flash.notice = 'follow not successful!'
+      redirect_to root_path
+    end
+  end
 
-  # end
+  def unfollow
+    req = Following.find_by(user_id: current_user.id, follower_id: params[:user_id])
+    req.destroy
+    flash.notice = "You have unfollowed #{User.find(params[:user_id]).name}"
+    redirect_to root_path
+  end
 
   # def destroy
   #   @_current_user = session[:current_user_id] = nil

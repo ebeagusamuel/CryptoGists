@@ -25,12 +25,12 @@
 
           <div class='row px-0 mx-0'>
             <div class='col-6 text-center px-3 py-3 border border-left-0 border-top-0 border-dark'>
-              <span class='font-weight-bold text-white'>10</span>
+              <span class='font-weight-bold text-white'><%= current_user.followings.count %></span>
               <p class='text-secondary'>Following</p>
             </div>
             <div class='col-6 text-center px-3 py-3 border-bottom border-dark'>
-              <span class='font-weight-bold text-white'>10</span>
-              <p class='text-secondary'>Following</p>
+              <span class='font-weight-bold text-white'><%= current_user.followers.count %></span>
+              <p class='text-secondary'>Followers</p>
             </div>
           </div>
 
@@ -46,8 +46,8 @@
               <% end %>
             </div>
             <div class='border-bottom border-dark pt-3'>
-              <%= link_to root_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
-                PROFILE
+              <%= link_to users_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
+                GISTERS
               <% end %>
             </div>
             <div class='border-bottom border-dark pt-3'>

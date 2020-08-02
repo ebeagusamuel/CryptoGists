@@ -19,15 +19,15 @@
     
     <div class='d-flex'>
       <div class='flex-grow-1 pt-2 text-center border-right border-bottom border-gray'>
-        <span class='font-weight-bold text-dark'>10</span>
+        <span class='font-weight-bold text-dark'><%= @user.gists.count %></span>
         <p class='text-secondary'>Gists</p>
       </div>
       <div class='flex-grow-1 pt-2 text-center border-right border-bottom border-gray'>
-        <span class='font-weight-bold text-dark'>10</span>
+        <span class='font-weight-bold text-dark'><%= @user.followings.count %></span>
         <p class='text-secondary'>Following</p>
       </div>
       <div class='flex-grow-1 pt-2 text-center border-bottom border-gray'>
-        <span class='font-weight-bold text-dark'>10</span>
+        <span class='font-weight-bold text-dark'><%= @user.followers.count %></span>
         <p class='text-secondary'>Followers</p>
       </div>
     </div>

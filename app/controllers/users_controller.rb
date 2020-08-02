@@ -2,6 +2,12 @@ class UsersController < ApplicationController
   before_action :authenticate_user, except: %i[login new create destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
+  def index
+    @users = User.exclude_current_user(current_user)
+    @gists = Gist.all.order('created_at DESC')
+    @gist = Gist.new
+  end
+
   def show
     @user = User.find(params[:id])
     @users = User.followed_by(@user)

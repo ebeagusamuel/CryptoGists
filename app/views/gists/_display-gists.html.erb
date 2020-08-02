@@ -7,7 +7,7 @@
     </div>
     <div class='col-10 pl-0 '>
       <div class='d-flex justify-content-between'>
-        <span class='text-secondary font-weight-bold'><%= link_to gist.user.name, root_path, class: 'text-decoration-none' %></span>
+        <span class='text-secondary font-weight-bold'><%= link_to gist.user.name, user_path(gist.user), class: 'text-decoration-none' %></span>
         <span class='text-secondary font-weight-light'><%= gist.created_at.strftime("%Y/%m/%d %I:%M%P") %></span>
       </div>
       <p><%= gist.body %></p>

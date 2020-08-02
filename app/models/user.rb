@@ -15,4 +15,9 @@ class User < ApplicationRecord
     frnds << user.id
     where.not(id: frnds).order('created_at DESC')
   end
+
+  def self.followed_by(user)
+    frnds = user.followers.pluck(:user_id)
+    where(id: frnds).order('created_at DESC')
+  end
 end

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @users = User.followed_by(@user)
     @gists = @user.gists.order('created_at DESC')
   end
 

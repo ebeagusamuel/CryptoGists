@@ -10,9 +10,11 @@ class GistsController < ApplicationController
   def create
     @gist = current_user.gists.build(gist_params)
     if @gist.save
-      redirect_to root_path, notice: 'Gist posted successfully'
+      flash.notice = 'Gist posted successfully'
+      redirect_to root_path
     else
-      render :index, notice: 'Gist was not posted!'
+      flash.alert = 'Gist was not posted!'
+      redirect_to gists_path
     end
   end
 

@@ -12,10 +12,9 @@
 
   <body>
     <div class='row'>
-      <% x = 12%>
-      <% if current_user %>
-        <% x = 10 %>
-        <div class='cu_nav col-2 mr-0 pr-0'>
+     
+      <% if current_user%>
+        <div class='cu_nav col-2 fixed-top mr-0 pr-0 h-100'>
           <div class='d-flex py-4 px-2 align-items-center border-bottom border-dark'>
             <div>
               <%= image_tag current_user.profile_image, class: 'pp rounded'%>
@@ -59,9 +58,11 @@
         </div>
       <% end %>
 
-      <div class="col-<%= x %> ml-0 pl-0">
+  
+   
+      <div class="col-<%= x %> offset-<%= y %>  pl-0">
         <nav class='navbar navbar-light bg-primary py-3 px-2 d-flex justify-content-between'>
-          <div class='ml-2'>
+          <div class='ml-4'>
             <%= link_to root_path do %>
               <%= image_tag 'logo.png', width: 50, height: 50, class: 'rounded' %>
             <% end %>
@@ -77,17 +78,18 @@
           </div>
         </nav>
 
-        <% if notice %>
-          <p class="alert alert-success text-center mb-0"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="alert alert-danger text-center mb-0"><%= alert %></p>
+        <% flash.each do |message_type, message| %>
+          <div class="<%= "alert alert-#{message_type == 'notice' ? 'success' : 'danger'}" %> text-center mb-0">
+            <%= message %>
+            <button type="button" class="close" data-dismiss="alert">
+              <span aria-hidden="true">&times;</span>
+              <span class="sr-only">Close</span>
+            </button>
+          </div>
         <% end %>
 
         <%= yield %>
       </div>
-
-      
     </div>
 
   

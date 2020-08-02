@@ -22,9 +22,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:current_user_id] = @user.id
-      redirect_to root_path, notice: 'User created successfully'
+      flash.notice = 'User created successfully'
+      redirect_to root_path
     else
-      flash.notice = 'Was not able to create new user!'
+      flash.alert = 'Was not able to create new user!'
       render :new
     end
   end
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
       flash.notice = 'Your details have been updated suceesfully'
       redirect_to root_path
     else
-      flash.notice = "Couldn't update your details!"
+      flash.alert = "Couldn't update your details!"
       render :edit
     end
   end
@@ -58,8 +59,8 @@ class UsersController < ApplicationController
       flash.notice = "You have followed #{User.find(params[:user_id]).name}"
       redirect_to root_path
     else
-      flash.notice = 'follow not successful!'
-      redirect_to root_path
+      flash.alert = 'follow not successful!'
+      redirect_to users_path
     end
   end
 

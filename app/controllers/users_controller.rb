@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user, except: %i[login new create destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
   def show
     @user = User.find(params[:id])
@@ -72,5 +73,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :username, :profile_image, :cover_image, :id)
+  end
+
+  def invalid_user
+    logger.error "Attempt to access invalid user #{params[:id]}"
+    redirect_to root_path, notice: 'Invalid user!'
   end
 end

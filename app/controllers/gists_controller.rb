@@ -13,7 +13,7 @@ class GistsController < ApplicationController
       flash.notice = 'Gist posted successfully'
       redirect_to root_path
     else
-      flash.alert = 'Gist was not posted!'
+      flash.alert = @gist.errors.full_messages.join('. ').to_s
       redirect_to gists_path
     end
   end

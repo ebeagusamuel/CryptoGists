@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   post '/confirm_login', to: 'application#confirm_login'
   post '/logout', to: 'users#logout', as: 'logout'
 
-  resources :gists
+  resources :gists do
+    resources :comments
+  end
 
   root to: 'gists#index'
 

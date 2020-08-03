@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true
 
   has_many :gists, dependent: :destroy
+  has_many :comments
   has_many :followings
   has_many :followers, class_name: 'Following', foreign_key: 'follower_id'
   has_one_attached :profile_image

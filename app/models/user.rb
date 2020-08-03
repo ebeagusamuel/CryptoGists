@@ -1,13 +1,15 @@
 class User < ApplicationRecord
-  validates :name, presence: true
-  validates :username, presence: true, uniqueness: true
-
   has_many :gists, dependent: :destroy
   has_many :comments
   has_many :followings
   has_many :followers, class_name: 'Following', foreign_key: 'follower_id'
   has_one_attached :profile_image
   has_one_attached :cover_image
+
+  validates :name, presence: true
+  validates :username, presence: true, uniqueness: true
+  validates :profile_image, attached: true
+  validates :cover_image, attached: true
 
   scope :exclude_current_user, ->(id) { where('id != ?', id) }
 

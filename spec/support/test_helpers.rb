@@ -14,6 +14,11 @@ module TestHelpers
     click_button('commit')
   end
 
+  def create_gist(content)
+    fill_in('gist[body]', with: content)
+    click_button('commit')
+  end
+
   # def follow
   #   click_link('follow')
   #   fill_in('article_title', with: title)

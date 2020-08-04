@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'users_controller', type: :system do
+RSpec.describe 'gists_controller', type: :system do
   before { signup_user('John Doe', 'JDoe') }
 
   it 'creates a post' do

@@ -8,8 +8,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :username, presence: true, uniqueness: true
-  validates :profile_image, attached: true, content_type: ["image/png", "image/jpeg", "image/jpg"]
-  validates :cover_image, attached: true, content_type: ["image/png", "image/jpeg", "image/jpg"]
+  validates :profile_image, attached: true, content_type: ['image/png', 'image/jpeg', 'image/jpg']
+  validates :cover_image, attached: true, content_type: ['image/png', 'image/jpeg', 'image/jpg']
 
   scope :exclude_current_user, ->(id) { where('id != ?', id) }
 

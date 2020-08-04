@@ -1,9 +1,10 @@
 class ContentTypeValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    unless value.attached? && value.content_type.in?(content_types)
-      value = nil if record.new_record? 
-      record.errors.add(attribute, 'must be either a .png, .jpg or .jpeg file')
-    end
+    return unless value.attached?
+    return if value.content_type.in?(content_types)
+
+    value.purge
+    record.errors.add(attribute, 'must be either a .png, .jpg or .jpeg file')
   end
 
   private

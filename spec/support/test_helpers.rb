@@ -18,13 +18,4 @@ module TestHelpers
     fill_in('gist[body]', with: content)
     click_button('commit')
   end
-
-  # def follow
-  #   click_link('follow')
-  #   fill_in('article_title', with: title)
-  #   fill_in('article_text', with: txt)
-  #   attach_file('article_image', './spec/support/test_img.jpg')
-  #   check("categories_#{id}")
-  #   click_button('commit')
-  # end
 end

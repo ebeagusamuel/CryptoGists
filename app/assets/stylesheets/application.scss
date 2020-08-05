@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+.body {
+  background-color: #f5f6f8;
+}
 
 .cu_nav {
   background-color: #1b2a3d;
@@ -53,7 +56,7 @@
 }
 
 .main_p {
-  height: 100vh;
+  // height: 100vh;
 
   p {
     color: #ada7a7;

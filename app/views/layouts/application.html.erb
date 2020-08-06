@@ -14,7 +14,7 @@
     <div class='row'>
      
       <% if current_user%>
-        <div class='cu_nav col-2 fixed-top mr-0 pr-0 h-100'>
+        <div class='cu_nav col-2 fixed-top mr-0 px-0 h-100'>
           <div class='d-flex py-4 px-2 align-items-center border-bottom border-dark'>
             <div>
               <%= image_tag current_user.profile_image, class: 'pp rounded'%>
@@ -51,7 +51,7 @@
             </div>
             <div class='border-bottom border-dark pt-3'>
               <%= link_to root_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
-                PROFILE
+                GIST
               <% end %>
             </div>
           </div>

@@ -3,14 +3,14 @@ class UsersController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
   def index
-    @users = User.exclude_current_user(current_user)
-    @gists = Gist.all.order('created_at DESC')
+    @users = User.includes(:profile_image_attachment).exclude_current_user(current_user)
+    @gists = Gist.order('created_at DESC')
     @gist = Gist.new
   end
 
   def show
-    @user = User.find(params[:id])
-    @users = User.followed_by(@user)
+    @user = User.includes(:profile_image_attachment).find(params[:id])
+    @users = User.includes(:profile_image_attachment).followed_by(@user)
     @gists = @user.gists.order('created_at DESC')
   end
 
@@ -70,11 +70,6 @@ class UsersController < ApplicationController
     flash.notice = "You have unfollowed #{User.find(params[:user_id]).name}"
     redirect_to root_path
   end
-
-  # def destroy
-  #   @_current_user = session[:current_user_id] = nil
-  #   redirect_to root_url
-  # end
 
   private
 

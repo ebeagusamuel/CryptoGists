@@ -2,7 +2,7 @@ class GistsController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @gists = Gist.includes([:user, :comments]).order('created_at DESC')
+    @gists = Gist.includes(%i[user comments]).order('created_at DESC')
     @users = User.includes(:profile_image_attachment).who_to_follow(current_user)
     @gist = Gist.new
   end

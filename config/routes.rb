@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users do
+  resources :users, except: [:destroy] do
     post '/follow', to: 'users#follow', as: 'follow'
     post '/unfollow', to: 'users#unfollow', as: 'unfollow'
   end
@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   post '/confirm_login', to: 'application#confirm_login'
   post '/logout', to: 'users#logout', as: 'logout'
 
-  resources :gists do
-    resources :comments
+  resources :gists, only: [:index, :create] do
+    resources :comments, only: [:create]
   end
 
   root to: 'gists#index'

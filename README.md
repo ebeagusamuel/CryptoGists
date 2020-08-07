@@ -68,6 +68,7 @@ AWS S3 buckets was used for active storage in production, while in development l
 ```Ruby
     bundle exec rspec --format documentation
 ```
+(Note that to run the test, you will need to have chrome browser installed on your computer)
 
 ### Deployment
 The project was depolyed to heroku. If you set up AWS S3 for active storage and want to deploy your own copy to heroku, then you will need to allow heroku access the encrypted API keys by running
@@ -80,7 +81,7 @@ The project was depolyed to heroku. If you set up AWS S3 for active storage and 
 
 ## Authors
 
-👤 **Ikraam Ghoor**
+👤 **Ebeagu Samuel**
 
 - Github: [@ebeagusamuel](https://github.com/ebeagusamuel)
 - Twitter: [@ebeagu_samuel](https://twitter.com/ebeagu_samuel)
@@ -91,7 +92,7 @@ The project was depolyed to heroku. If you set up AWS S3 for active storage and 
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/ikraamg/Great-Books/issues)
+Feel free to check the [issues page](https://github.com/ebeagusamuel/CryptoGists/issues)
 
 Start by:
 

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Comment, type: :model do
   let(:new_user) { user }
-  let(:gist) { Gist.create(user_id: new_user.id, body: 'Test post') }
+  let(:gist) { Gist.create(author_id: new_user.id, text: 'Test post') }
   subject { Comment.new(user_id: new_user.id, gist_id: gist.id, body: 'This is a comment') }
 
   it 'is valid with valid attributes' do

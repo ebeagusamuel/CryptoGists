@@ -15,5 +15,5 @@ User.destroy_all
   user.profile_image.attach(io: File.open('app/assets/images' + "/profile#{index + 1}.jpg"), filename: "profile#{index + 1}.jpg", content_type: 'image/jpg')
   user.cover_image.attach(io: File.open('app/assets/images' + "/cover#{index + 1}.jpg"), filename: "cover#{index + 1}.jpg", content_type: 'image/jpg')
   user.save
-  Gist.create(user_id: user.id, body: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4))
+  Gist.create(author_id: user.id, text: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4))
 end

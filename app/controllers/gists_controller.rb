@@ -21,6 +21,6 @@ class GistsController < ApplicationController
   private
 
   def gist_params
-    params.require(:gist).permit(:id, :body)
+    params.require(:gist).permit(:id, :text)
   end
 end

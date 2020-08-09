@@ -15,7 +15,7 @@ module TestHelpers
   end
 
   def create_gist(content)
-    fill_in('gist[body]', with: content)
+    fill_in('gist[text]', with: content)
     click_button('commit')
   end
 

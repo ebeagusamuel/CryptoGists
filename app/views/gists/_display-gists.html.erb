@@ -10,7 +10,7 @@
         <span class='text-secondary font-weight-bold'><%= link_to gist.author.name, user_path(gist.author), class: 'text-decoration-none' %></span>
         <span class='text-secondary font-weight-light'><%= gist.created_at.strftime("%Y/%m/%d") %></span>
       </div>
-      <p><%= gist.body %></p><hr class='mt-0'/>
+      <p><%= gist.text %></p><hr class='mt-0'/>
       <div>
         <% gist.comments.each do |comment| %>
           <div class="d-flex justify-content-between comments">

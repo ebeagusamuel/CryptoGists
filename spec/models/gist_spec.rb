@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Gist, type: :model do
   it 'is valid with valiid attributes' do
-    sub = Gist.new(author_id: user.id, body: 'This is a test post')
+    sub = Gist.new(author_id: user.id, text: 'This is a test post')
     expect(sub).to be_valid
   end
 
@@ -13,7 +13,7 @@ RSpec.describe Gist, type: :model do
 
   it 'is invalid when body length is more than 500 characters' do
     sub = Gist.new(author_id: user.id)
-    sub.body = 'a' * 510
+    sub.text = 'a' * 510
     expect(sub).to_not be_valid
   end
 

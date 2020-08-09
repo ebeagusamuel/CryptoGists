@@ -1,8 +1,8 @@
 <div class='my-3 p-3 bg-white rounded'>
   <%= form_for @gist do |f|%>
     <div class="form-group">
-      <%= f.label :body, 'Post a Gist', class: 'text-secondary font-weight-bold' %><br/>
-      <%= f.text_area :body, class: 'form-control', placeholder: 'Have a crypto gist?', autofocus: true  %>
+      <%= f.label :text, 'Post a Gist', class: 'text-secondary font-weight-bold' %><br/>
+      <%= f.text_area :text, class: 'form-control', placeholder: 'Have a crypto gist?', autofocus: true  %>
     </div>
 
     <div class="form-group">

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :gists, dependent: :destroy
+  has_many :gists, foreign_key: 'author_id', dependent: :destroy
   has_many :comments
   has_many :followings
   has_many :followers, class_name: 'Following', foreign_key: 'follower_id'

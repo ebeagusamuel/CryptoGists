@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  before_action :authenticate_user, except: %i[login]
   def login; end
 
   def confirm_login

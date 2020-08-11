@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, except: %i[new create destroy]
+  before_action :authenticate_user, except: %i[new create]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
   def index

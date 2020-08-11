@@ -11,89 +11,88 @@
   </head>
 
   <body class='body'>
-    <div class='row'>
-     
-      <% if current_user%>
-        <div class='cu_nav col-2 fixed-top mr-0 px-0 h-100'>
-          <div class='d-flex py-4 px-2 align-items-center border-bottom border-dark'>
-            <div>
-              <%= image_tag current_user.profile_image, class: 'pp rounded'%>
+    <div class='container-fluid'>
+      <div class='row'>
+      
+        <% if current_user%>
+          <div class='cu_nav col-2 fixed-top mr-0 px-0 h-100'>
+            <div class='d-flex py-4 px-2 align-items-center border-bottom border-dark'>
+              <div>
+                <%= image_tag current_user.profile_image, class: 'pp rounded'%>
+              </div>
+              <div class='text-white text-center ml-2'><%= current_user.name %></div>
             </div>
-            <div class='text-white text-center ml-2'><%= current_user.name %></div>
-          </div>
 
-          <div class='row px-0 mx-0'>
-            <div class='col-6 text-center px-3 py-3 border border-left-0 border-top-0 border-dark'>
-              <span class='font-weight-bold text-white'><%= current_user.followings.count %></span>
-              <p class='text-secondary'>Following</p>
+            <div class='row px-0 mx-0'>
+              <div class='col-6 text-center px-3 py-3 border border-left-0 border-top-0 border-dark'>
+                <span class='font-weight-bold text-white'><%= current_user.followings.count %></span>
+                <p class='text-secondary'>Following</p>
+              </div>
+              <div class='col-6 text-center px-3 py-3 border-bottom border-dark'>
+                <span class='font-weight-bold text-white'><%= current_user.followers.count %></span>
+                <p class='text-secondary'>Followers</p>
+              </div>
             </div>
-            <div class='col-6 text-center px-3 py-3 border-bottom border-dark'>
-              <span class='font-weight-bold text-white'><%= current_user.followers.count %></span>
-              <p class='text-secondary'>Followers</p>
-            </div>
-          </div>
 
-          <div class='cu_nav_links text-center'>
-            <div class='border-bottom border-dark pt-3'>
-              <%= link_to root_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
-                HOME
-              <% end %>
+            <div class='cu_nav_links text-center'>
+              <div class='border-bottom border-dark pt-3'>
+                <%= link_to root_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
+                  HOME
+                <% end %>
+              </div>
+              <div class='border-bottom border-dark pt-3'>
+                <%= link_to user_path(current_user), class: 'text-decoration-none font-weight-bold text-secondary' do %>
+                  PROFILE
+                <% end %>
+              </div>
+              <div class='border-bottom border-dark pt-3'>
+                <%= link_to users_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
+                  GISTERS
+                <% end %>
+              </div>
+              <div class='border-bottom border-dark pt-3'>
+                <%= link_to root_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
+                  GIST
+                <% end %>
+              </div>
             </div>
-            <div class='border-bottom border-dark pt-3'>
-              <%= link_to user_path(current_user), class: 'text-decoration-none font-weight-bold text-secondary' do %>
-                PROFILE
-              <% end %>
-            </div>
-            <div class='border-bottom border-dark pt-3'>
-              <%= link_to users_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
-                GISTERS
-              <% end %>
-            </div>
-            <div class='border-bottom border-dark pt-3'>
-              <%= link_to root_path, class: 'text-decoration-none font-weight-bold text-secondary' do %>
-                GIST
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-
-  
-   
-      <div class="col-<%= x %> offset-<%= y %>  pl-0">
-        <nav class='navbar navbar-light bg-primary py-3 px-2 d-flex justify-content-between'>
-          <div class='ml-4'>
-            <%= link_to root_path do %>
-              <%= image_tag 'logo.png', width: 50, height: 50, class: 'rounded' %>
-            <% end %>
-          </div>
-          <div class='pr-3'>
-            <% if current_user%>
-              <span class="nav-item pr-3"><%= link_to "#{current_user.username}", edit_user_path(current_user), class: "font-weight-bold text-white text-decoration-none nav-links" %></span>
-              <span class="nav-item"><%= link_to "Logout", logout_path, method: :post, class: "font-weight-bold text-white text-decoration-none nav-links" %></span>
-            <%else%>
-              <span class="nav-item pr-3"><%= link_to "Login", login_path, class: "font-weight-bold text-white text-decoration-none nav-links"%></span> 
-              <span class="nav-item"><%= link_to "Sign up", new_user_path, class: "font-weight-bold text-white text-decoration-none nav-links"%></span>
-            <%end%>
-          </div>
-        </nav>
-
-        <% flash.each do |message_type, message| %>
-          <div class="<%= "alert alert-#{message_type == 'notice' ? 'success' : 'danger'}" %> text-center mb-0">
-            <%= message %>
-            <button type="button" class="close" data-dismiss="alert">
-              <span aria-hidden="true">&times;</span>
-              <span class="sr-only">Close</span>
-            </button>
           </div>
         <% end %>
 
-        <%= yield %>
-      </div>
+    
+    
+        <div class="col-<%= x %> offset-<%= y %>  pl-0">
+          <nav class='navbar navbar-light bg-primary py-3 px-2 d-flex justify-content-between'>
+            <div class='ml-4'>
+              <%= link_to root_path do %>
+                <%= image_tag 'logo.png', width: 50, height: 50, class: 'rounded' %>
+              <% end %>
+            </div>
+            <div class='pr-3'>
+              <% if current_user%>
+                <span class="nav-item pr-3"><%= link_to "#{current_user.username}", edit_user_path(current_user), class: "font-weight-bold text-white text-decoration-none nav-links" %></span>
+                <span class="nav-item"><%= link_to "Logout", logout_path, method: :post, class: "font-weight-bold text-white text-decoration-none nav-links" %></span>
+              <%else%>
+                <span class="nav-item pr-3"><%= link_to "Login", login_path, class: "font-weight-bold text-white text-decoration-none nav-links"%></span> 
+                <span class="nav-item"><%= link_to "Sign up", new_user_path, class: "font-weight-bold text-white text-decoration-none nav-links"%></span>
+              <%end%>
+            </div>
+          </nav>
+
+          <% flash.each do |message_type, message| %>
+            <div class="<%= "alert alert-#{message_type == 'notice' ? 'success' : 'danger'}" %> text-center mb-0">
+              <%= message %>
+              <button type="button" class="close" data-dismiss="alert">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+              </button>
+            </div>
+          <% end %>
+
+          <%= yield %>
+        </div>
+      </div>    
     </div>
-
-  
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   </body>

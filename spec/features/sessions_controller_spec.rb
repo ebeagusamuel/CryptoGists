@@ -16,5 +16,4 @@ RSpec.describe 'sessions_controller', type: :system do
     click_link('Logout')
     expect(page).to have_content 'You need to login'
   end
-
 end

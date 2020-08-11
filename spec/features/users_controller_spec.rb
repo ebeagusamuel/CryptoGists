@@ -6,11 +6,6 @@ RSpec.describe 'users_controller', type: :system do
     signup_user('Donald Trump', 'DTrump')
   end
 
-  it 'signs in a user' do
-    login('JDoe')
-    expect(page).to have_content 'Login successful'
-  end
-
   it 'follows a user' do
     login('JDoe')
     click_link('follow')

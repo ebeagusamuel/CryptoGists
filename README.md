@@ -7,7 +7,7 @@
 ## Live Demo and Presentation
 
 - The project was deployed on Heroku: [Live Demo Link](https://sheltered-crag-80749.herokuapp.com/)
-- [Presentation Video](https://www.loom.com/share/ab723e1e89bf4676a85b34236c68a8cd)
+- [Presentation Video](https://www.loom.com/share/223beab8dc8348858e2c63bfccddb96d)
 
 
 <p align="center">

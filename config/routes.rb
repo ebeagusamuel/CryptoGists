@@ -3,9 +3,9 @@ Rails.application.routes.draw do
     post '/follow', to: 'users#follow', as: 'follow'
     post '/unfollow', to: 'users#unfollow', as: 'unfollow'
   end
-  get '/login', to: 'users#login', as: 'login'
-  post '/confirm_login', to: 'application#confirm_login'
-  post '/logout', to: 'users#logout', as: 'logout'
+  get '/login', to: 'sessions#login', as: 'login'
+  post '/confirm_login', to: 'sessions#confirm_login'
+  post '/logout', to: 'sessions#logout', as: 'logout'
 
   resources :gists, only: [:index, :create] do
     resources :comments, only: [:create]

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user, except: %i[login new create destroy]
+  before_action :authenticate_user, except: %i[new create destroy]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_user
 
   def index
@@ -31,11 +31,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
       flash.notice = 'Your details have been updated suceesfully'
       redirect_to root_path
@@ -43,13 +43,6 @@ class UsersController < ApplicationController
       flash.alert = "Couldn't update your details!"
       render :edit
     end
-  end
-
-  def login; end
-
-  def logout
-    @_current_user = session[:current_user_id] = nil
-    redirect_to root_url
   end
 
   def follow

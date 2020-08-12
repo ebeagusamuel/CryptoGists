@@ -1,0 +1,26 @@
+<div class='d-flex main_p'>
+  <div class='feeds px-4'>
+    <%= render 'gists/feed'%>
+
+  </div>
+
+  <div class='right_bar border-left border-gray'>
+    <div class='px-4 py-3'>
+      <h4 class='font-weight-bold text-secondary'>All Gisters</h4><hr/>
+
+      <% @users.each do |user|%>
+        <div class='row px-2'>
+          <div class='col-4 pr-0'>
+            <%= link_to user_path(user) do %>
+              <%= image_tag user.profile_image, class: 'pp rounded-circle' %>
+            <% end %>
+          </div>
+          <div class='col-8 pl-4 pl-lg-0'>
+            <%= link_to user.name, user_path(user), class: 'd-block text-decoration-none' %>
+            <%= display_link(user) %>
+          </div>
+        </div><hr/>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<% @gists.each do |gist|%>
+  <div class='row'>
+    <div class='col-2 pr-0 text-center'>
+      <%= link_to user_path(gist.author) do %>
+        <%= image_tag gist.author.profile_image, class: 'pp rounded' %>
+      <% end %>
+    </div>
+    <div class='col-10 pl-0 '>
+      <div class='d-flex justify-content-between'>
+        <span class='text-secondary font-weight-bold'><%= link_to gist.author.name, user_path(gist.author), class: 'text-decoration-none' %></span>
+        <span class='text-secondary font-weight-light'><%= gist.created_at.strftime("%Y/%m/%d") %></span>
+      </div>
+      <p><%= gist.text %></p><hr class='mt-0'/>
+      <div>
+        <% gist.comments.each do |comment| %>
+          <div class="d-flex justify-content-between comments">
+            <p class='pr-4'>
+              <b><%= link_to comment.user.name, user_path(comment.user), class: 'text-decoration-none text-secondary' %>:</b> <%= comment.body %>
+            </p>
+            <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
+          </div><hr class='mt-0'/>
+        <% end %>
+        <%= form_for(gist.comments.new, url: gist_comments_path(gist)) do |form| %>
+          <div class='form-group'>
+            <%= form.text_field :body, class: 'form-control', placeholder: 'Add new Comment' %>
+          </div>
+          <%= form.submit 'Comment', class: 'btn btn-secondary' %>
+        <% end %>
+      </div>
+    </div>
+  </div><hr>
+<% end %>

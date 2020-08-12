@@ -1,0 +1,17 @@
+<div class='px-4 py-3'>
+  <h4 class='font-weight-bold text-secondary'>Who to follow</h4><hr/>
+
+  <% @users.each do |user|%>
+    <div class='row px-2'>
+      <div class='col-4 pr-0'>
+        <%= link_to user_path(user) do %>
+          <%= image_tag user.profile_image, class: 'pp rounded-circle' %>
+        <% end %>
+      </div>
+      <div class='col-8 pl-4 pl-lg-0'>
+        <%= link_to user.name, user_path(user), class: 'd-block text-decoration-none' %>
+        <%= link_to 'follow', user_follow_path(user), method: :post, class: 'd-inline-block px-2 py-1 text-white bg-primary rounded text-decoration-none' %>
+      </div>
+    </div><hr/>
+  <% end %>
+</div>
